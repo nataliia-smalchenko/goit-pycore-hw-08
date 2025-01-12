@@ -193,11 +193,26 @@ class AddressBook(UserDict):
         return refined_records
 
     def save_data(self, filename="addressbook.pkl"):
+        """
+        Зберігає поточний стан адресної книги в файл.
+
+        Аргументи:
+            filename (str): Назва файлу, в який буде збережено стан адресної книги. За замовчуванням використовується "addressbook.pkl".
+        """
         with open(filename, "wb") as f:
             pickle.dump(self, f)
 
     @classmethod
     def load_data(cls, filename="addressbook.pkl"):
+        """
+        Завантажує адресну книгу з файлу.
+
+        Аргументи:
+            filename (str): Назва файлу, з якого буде завантажено дані. За замовчуванням використовується "addressbook.pkl".
+
+        Повертає:
+            AddressBook: Об'єкт класу `AddressBook`, який містить дані, завантажені з файлу. Якщо файл не знайдено, повертається новий об'єкт `AddressBook`.
+        """
         try:
             with open(filename, "rb") as f:
                 return pickle.load(f)
